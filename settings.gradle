@@ -5,5 +5,5 @@
 rootProject.name = 'kumo'
 include(':kumo-api')
 include(':kumo-core')
-include(':kumo-cli')
 include(':kumo-tokenizers')
+//include(':kumo-cli')
