@@ -261,7 +261,8 @@ public class WordCloud {
         
         final double theta = angleGenerator.randomNext();
         final Word word = new Word(
-                wordFrequency.getWord(), colorPalette.next(), 
+                wordFrequency.getWord(), 
+                wordFrequency.getCategory() == -1? colorPalette.next() : colorPalette.getColors().get(wordFrequency.getCategory()), 
                 fontMetrics, this.collisionChecker, theta
         );
        

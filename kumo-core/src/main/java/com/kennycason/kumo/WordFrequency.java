@@ -10,6 +10,8 @@ public class WordFrequency implements Comparable<WordFrequency> {
     private final String word;
 
     private final int frequency;
+    
+    private final int category;
 
     private final KumoFont font;
 
@@ -17,16 +19,29 @@ public class WordFrequency implements Comparable<WordFrequency> {
         this.word = word;
         this.frequency = frequency;
         this.font = null;
+        this.category = -1;
+    }
+    
+    public WordFrequency(final String word, final int frequency, final int category) {
+    	this.word = word;
+    	this.frequency = frequency;
+    	this.font = null;
+    	this.category = category;
     }
 
     public WordFrequency(final String word, final int frequency, final KumoFont font) {
         this.word = word;
         this.frequency = frequency;
         this.font = font;
+        this.category = -1;
     }
 
     public String getWord() {
         return word;
+    }
+    
+    public int getCategory() {
+    	return category;
     }
 
     public int getFrequency() {
@@ -48,6 +63,6 @@ public class WordFrequency implements Comparable<WordFrequency> {
 
     @Override
     public String toString() {
-        return "WordFrequency [word=" + word + ", frequency=" + frequency + ", font=" + (font == null ? "default" : font.getFont().getFontName()) + "]";
+        return "WordFrequency [word=" + word + ", category=" + category + ", frequency=" + frequency + ", font=" + (font == null ? "default" : font.getFont().getFontName()) + "]";
     }
 }
