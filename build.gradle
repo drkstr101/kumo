@@ -3,32 +3,38 @@
  */
 
 allprojects {
-    group = 'com.kennycason'
-    version = '1.28-SNAPSHOT'
+	group = 'com.kennycason'
+	version = '1.28-SNAPSHOT'
 }
 
 subprojects {
-    apply plugin: 'java'
-    apply plugin: 'maven-publish'
+	apply plugin: 'java'
+	apply plugin: 'ivy-publish'
 
-    repositories {
-        mavenLocal()
-        maven {
-            url = uri('https://repo.maven.apache.org/maven2')
-        }
-    }
+	repositories {
+		mavenLocal()
+		maven { url = uri('https://repo.maven.apache.org/maven2') }
+	}
 
-    sourceCompatibility = '1.8'
+	sourceCompatibility = '1.8'
 
-    publishing {
-        publications {
-            maven(MavenPublication) {
-                from(components.java)
-            }
-        }
-    }
+	publishing {
+		publications {
+			ivy(IvyPublication) { from components.java }
+		}
 
-    tasks.withType(JavaCompile) {
-        options.encoding = 'UTF-8'
-    }
+		repositories {
+			ivy { url = uri('../../public/artifacts') }
+		}
+	}
+
+
+	tasks.withType(JavaCompile) {
+		options.encoding = 'UTF-8'
+	}
+}
+
+task publish {
+	group = "Pubishing"
+	subprojects.collect({ it.path }).each { dependsOn "${it}:publish"}
 }
