@@ -3,8 +3,8 @@
  */
 
 allprojects {
-	group = 'com.kennycason'
-	version = '1.28-SNAPSHOT'
+	group = 'drkstr101.resume'
+	version = '1.28.0'
 }
 
 subprojects {
