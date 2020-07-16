@@ -18,19 +18,18 @@ subprojects {
 
 	sourceCompatibility = '1.8'
 
+	tasks.withType(JavaCompile) {
+		options.encoding = 'UTF-8'
+	}
+
 	publishing {
 		publications {
 			ivy(IvyPublication) { from components.java }
 		}
 
 		repositories {
-			ivy { url = uri('../../public/artifacts') }
+			ivy { url = uri(rootProject.file('build/artifacts')) }
 		}
-	}
-
-
-	tasks.withType(JavaCompile) {
-		options.encoding = 'UTF-8'
 	}
 }
 
