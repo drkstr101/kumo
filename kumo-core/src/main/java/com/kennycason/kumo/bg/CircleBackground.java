@@ -1,6 +1,5 @@
 package com.kennycason.kumo.bg;
 
-import com.kennycason.kumo.collide.Collidable;
 import com.kennycason.kumo.collide.RectanglePixelCollidable;
 import com.kennycason.kumo.image.CollisionRaster;
 
